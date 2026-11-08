@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRÈMA — Made of Little Joys</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#eee8dc;color:#29251f;font-family:'DM Sans',sans-serif}
+nav{position:fixed;z-index:5;top:0;width:100%;display:flex;justify-content:space-between;padding:25px 6%;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+nav b{font-size:19px;letter-spacing:5px}
+section{min-height:100vh;position:relative;overflow:hidden;padding:100px 7vw}
+.hero{background:radial-gradient(ellipse at 55% 60%,#f8d9ad,#e9c9a5 35%,#eee8dc 75%)}
+#scene{position:absolute;inset:0;width:100%;height:100%}
+.copy{position:absolute;z-index:2;left:9%;top:23%;max-width:340px}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase}
+h1,h2{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-3px}
+h1{font-size:clamp(60px,9vw,110px);line-height:.92;margin:25px 0}
+p{font-size:14px;line-height:1.8;color:#655b4e;max-width:300px}
+.pill{display:inline-block;margin-top:18px;border:1px solid #514536;border-radius:30px;padding:14px 23px;text-decoration:none;color:inherit;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.scroll{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px}
+.story{background:#d7bda0;display:flex;align-items:center}
+.story:nth-of-type(3){background:#e8dfd0}
+.story .copy{position:relative;left:auto;top:auto;margin-left:48%}
+.story h2{font-size:clamp(50px,8vw,95px);line-height:.95;margin:20px 0}
+.number{font:italic 18px 'Playfair Display';color:#927b60}
+.footer{min-height:70vh;background:#29251f;color:#eee8dc;display:grid;place-items:center;text-align:center}
+.footer h2{font-size:clamp(55px,9vw,100px);line-height:.95}
+.footer p{color:#c4b9a8}
+@media(max-width:650px){
+.copy{top:15%;left:8%;max-width:260px}
+h1{font-size:65px}
+.story{align-items:end;padding-bottom:15vh}
+.story .copy{margin:0}
+.story:after{content:'✳';position:absolute;top:15%;right:12%;font-size:110px;color:#a47d56;opacity:.3}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<b>CRÈMA</b>
+<span>SMALL BATCH · SINCE 1988</span>
+<span>MENU ↗</span>
+</nav>
+
+<section class="hero">
+<canvas id="scene"></canvas>
+<div class="copy">
+<div class="eyebrow">A sweeter kind of moment</div>
+<h1>Made of<br>little joys.</h1>
+<p>Slow-crafted scoops, warm memories, and a little world worth getting lost in.</p>
+<a class="pill" href="#story">Discover our world ↘</a>
+</div>
+<div class="scroll">SCROLL TO EXPLORE ↓</div>
+</section>
+
+<section class="story" id="story">
+<div class="copy">
+<div class="number">01 / THE CRAFT</div>
+<h2>Good things<br>take time.</h2>
+<p>Every scoop begins with honest ingredients, a patient hand, and the belief that the details make the difference.</p>
+</div>
+</section>
+
+<section class="story">
+<div class="copy">
+<div class="number">02 / THE FEELING</div>
+<h2>A little<br>happiness.</h2>
+<p>From the first swirl to the last spoonful, make room for the moments that feel like summer.</p>
+</div>
+</section>
+
+<section class="footer">
+<div>
+<div class="eyebrow">COME BY FOR A SCOOP</div>
+<h2>Stay a little<br>longer.</h2>
+<p>Freshly made. Always worth the visit.</p>
+<a class="pill" style="border-color:#eee8dc;color:#eee8dc" href="#">BACK TO TOP ↑</a>
+</div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script>
+(()=>{
+const canvas=document.querySelector('#scene');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);
+camera.position.set(0,1.4,9);
+
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled=true;
+
+scene.add(new THREE.HemisphereLight(0xfff1d9,0x80644b,2));
+const light=new THREE.DirectionalLight(0xffffff,3);
+light.position.set(-3,7,6);
+light.castShadow=true;
+scene.add(light);
+
+const world=new THREE.Group();
+scene.add(world);
+
+const material=(color)=>new THREE.MeshStandardMaterial({color,roughness:.55});
+const cream=material('#f4d6aa');
+const pink=material('#d78b78');
+const coneMaterial=material('#bd8751');
+const dark=material('#48362a');
+const gold=material('#d4a96d');
+
+const floor=new THREE.Mesh(
+new THREE.CircleGeometry(3.2,64),
+material('#d9b68e')
+);
+floor.rotation.x=-Math.PI/2;
+floor.position.y=-1.35;
+floor.receiveShadow=true;
+world.add(floor);
+
+const cone=new THREE.Mesh(
+new THREE.ConeGeometry(.72,2.1,48),
+coneMaterial
+);
+cone.position.set(.4,-.1,0);
+cone.rotation.z=-.13;
+cone.castShadow=true;
+world.add(cone);
+
+for(let i=0;i<7;i++){
+const ring=new THREE.Mesh(
+new THREE.TorusGeometry(.5-i*.045,.018,6,48),
+gold
+);
+ring.position.set(.4,-.65+i*.18,0);
+ring.rotation.x=Math.PI/2;
+ring.scale.set(1,.82,1);
+world.add(ring);
+}
+
+const scoop=new THREE.Mesh(
+new THREE.SphereGeometry(.72,48,32),
+cream
+);
+scoop.position.set(.1,1.18,0);
+scoop.scale.set(1,.82,1);
+scoop.castShadow=true;
+world.add(scoop);
+
+const scoop2=new THREE.Mesh(
+new THREE.SphereGeometry(.55,40,28),
+pink
+);
+scoop2.position.set(.72,1.48,.12);
+scoop2.scale.set(1,.82,1);
+world.add(scoop2);
+
+const cherry=new THREE.Mesh(
+new THREE.SphereGeometry(.13,24,16),
+material('#9c3f36')
+);
+cherry.position.set(.5,2.08,.18);
+world.add(cherry);
+
+const person=new THREE.Group();
+world.add(person);
+person.position.set(-1.45,-1.22,.2);
+
+const body=new THREE.Mesh(
+new THREE.CapsuleGeometry(.13,.48,5,12),
+material('#f5eee2')
+);
+body.position.y=.55;
+body.rotation.z=-.12;
+person.add(body);
+
+const head=new THREE.Mesh(
+new THREE.SphereGeometry(.16,24,18),
+material('#c88961')
+);
+head.position.set(.02,.98,0);
+person.add(head);
+
+const hair=new THREE.Mesh(
+new THREE.SphereGeometry(.17,20,12),
+dark
+);
+hair.scale.set(1,.55,1);
+hair.position.set(.02,1.08,-.015);
+person.add(hair);
+
+for(let side of [-1,1]){
+const leg=new THREE.Mesh(
+new THREE.CylinderGeometry(.055,.045,.42,10),
+dark
+);
+leg.position.set(side*.09,.17,0);
+person.add(leg);
+}
+
+const arm=new THREE.Mesh(
+new THREE.CylinderGeometry(.045,.035,.43,10),
+material('#c88961')
+);
+arm.position.set(.25,.63,0);
+arm.rotation.z=-1.05;
+person.add(arm);
+
+const spoon=new THREE.Mesh(
+new THREE.CylinderGeometry(.018,.018,.48,8),
+gold
+);
+spoon.position.set(.48,.78,.03);
+spoon.rotation.z=-.65;
+person.add(spoon);
+
+for(let i=0;i<22;i++){
+const dot=new THREE.Mesh(
+new THREE.SphereGeometry(.035+Math.random()*.04,10,8),
+material(i%2?'#e5bd8e':'#b77c57')
+);
+const angle=Math.random()*Math.PI*2;
+const radius=1.8+Math.random()*.8;
+dot.position.set(
+Math.cos(angle)*radius,
+-1.18+Math.random()*.4,
+Math.sin(angle)*radius
+);
+world.add(dot);
+}
+
+world.position.x=innerWidth<650?.75:1.35;
+world.scale.setScalar(innerWidth<650?.78:1);
+
+if(window.gsap&&window.ScrollTrigger){
+gsap.registerPlugin(ScrollTrigger);
+gsap.to(world.rotation,{
+y:Math.PI*1.4,
+ease:'none',
+scrollTrigger:{
+trigger:document.body,
+start:'top top',
+end:'bottom bottom',
+scrub:1
+}
+});
+gsap.to(world.position,{
+y:-1.1,
+ease:'none',
+scrollTrigger:{
+trigger:document.body,
+start:'top top',
+end:'bottom bottom',
+scrub:1
+}
+});
+gsap.to(camera.position,{
+z:7,
+ease:'none',
+scrollTrigger:{
+trigger:document.body,
+start:'top top',
+end:'bottom bottom',
+scrub:1
+}
+});
+}
+
+function animate(){
+requestAnimationFrame(animate);
+scoop2.position.y=1.48+Math.sin(Date.now()*.001)*.035;
+renderer.render(scene,camera);
+}
+animate();
+
+addEventListener('resize',()=>{
+camera.aspect=innerWidth/innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(innerWidth,innerHeight);
+world.position.x=innerWidth<650?.75:1.35;
+world.scale.setScalar(innerWidth<650?.78:1);
+});
+})();
+</script>
+</body>
+  </html>
+  
