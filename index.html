@@ -1,294 +1,84 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100805">
 <title>CRÈMA — A Taste of Happiness</title>
-<meta name="theme-color" content="#100b09">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#100b09;
-  --cream:#f4ead9;
-  --gold:#c8a56b;
-  --muted:#a99a88;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--cream);
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-img{display:block;width:100%;height:100%;object-fit:cover}
-header{
-  position:absolute;top:0;left:0;width:100%;z-index:10;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:28px 7%;
-}
-.logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:32px;letter-spacing:7px;color:var(--cream);
-}
-nav{display:flex;gap:32px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
-nav a{color:#d5c9b9;transition:.3s}
-nav a:hover{color:var(--gold)}
-.menu{display:none}
-.hero{
-  min-height:100svh;position:relative;display:flex;align-items:center;
-  padding:140px 9% 90px;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-  linear-gradient(90deg,rgba(16,11,9,.96) 0%,rgba(16,11,9,.65) 43%,rgba(16,11,9,.12) 100%),
-  linear-gradient(0deg,var(--bg),transparent 30%),
-  url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=2000&q=90') center/cover;
-  transform:scale(1.06);
-  animation:heroZoom 12s ease-out forwards;
-}
-@keyframes heroZoom{to{transform:scale(1)}}
-.hero-content{position:relative;z-index:1;max-width:650px}
-.eyebrow{
-  color:var(--gold);font-size:10px;letter-spacing:5px;
-  text-transform:uppercase;margin-bottom:25px;
-}
-h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
-.hero h1{font-size:clamp(64px,10vw,132px);line-height:.82;letter-spacing:-3px}
-.hero h1 span{color:var(--gold);font-style:italic}
-.hero p{
-  color:#d0c2b1;font-size:14px;line-height:1.9;
-  max-width:390px;margin:35px 0;
-}
-.cta{
-  display:inline-flex;align-items:center;gap:25px;
-  padding:16px 24px;border:1px solid var(--gold);
-  color:var(--cream);font-size:10px;letter-spacing:2px;
-  text-transform:uppercase;transition:.35s;
-}
-.cta:hover{background:var(--gold);color:#170f0a}
-.cta span{font-size:18px}
-.hero-note{
-  position:absolute;right:7%;bottom:55px;
-  writing-mode:vertical-rl;color:#d6c4a9;
-  font-size:9px;letter-spacing:4px;text-transform:uppercase;
-}
-.section{padding:130px 9%;position:relative}
-.section-label{
-  color:var(--gold);font-size:10px;letter-spacing:4px;
-  text-transform:uppercase;margin-bottom:25px;
-}
-.intro{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:9%;align-items:center;
-}
-.intro h2{font-size:clamp(45px,6vw,78px);line-height:.98}
-.intro h2 em{color:var(--gold)}
-.intro-copy{color:var(--muted);font-size:14px;line-height:2}
-.intro-copy p+p{margin-top:20px}
-.image-story{
-  height:580px;position:relative;margin-top:90px;overflow:hidden;
-}
-.image-story img{transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
-.image-story:hover img{transform:scale(1.045)}
-.image-caption{
-  position:absolute;left:35px;bottom:35px;
-  font-family:'Cormorant Garamond',serif;font-size:32px;
-  text-shadow:0 2px 20px #000;
-}
-.flavours{background:#17100d}
-.flavour-head{text-align:center;margin-bottom:65px}
-.flavour-head h2{font-size:clamp(48px,7vw,86px)}
-.flavour-head p{color:var(--muted);font-size:13px;margin-top:15px}
-.flavour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.flavour-card{
-  position:relative;min-height:440px;overflow:hidden;
-  background:#241913;cursor:pointer;border:1px solid #38271e;
-  transition:transform .4s,border-color .4s;
-}
-.flavour-card:hover,.flavour-card.active{
-  transform:translateY(-9px);border-color:var(--gold);
-}
-.flavour-card img{position:absolute;inset:0;transition:transform .8s}
-.flavour-card:hover img{transform:scale(1.07)}
-.flavour-card:after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(0deg,rgba(12,8,6,.96),transparent 75%);
-}
-.flavour-info{position:absolute;z-index:1;bottom:28px;left:25px;right:25px}
-.flavour-info small{color:var(--gold);letter-spacing:3px;font-size:9px}
-.flavour-info h3{font-size:38px;margin:8px 0}
-.flavour-info p{font-size:11px;color:#c5b6a5;line-height:1.7}
-.story{
-  min-height:620px;display:flex;align-items:center;
-  background:
-  linear-gradient(90deg,rgba(13,8,6,.92),rgba(13,8,6,.25)),
-  url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1800&q=85') center/cover;
-}
-.story-content{max-width:570px}
-.story h2{font-size:clamp(55px,8vw,100px);line-height:.9}
-.story h2 em{color:var(--gold)}
-.story p{max-width:390px;color:#d1c2b0;line-height:1.9;font-size:13px;margin:28px 0}
-footer{
-  padding:55px 9%;display:flex;justify-content:space-between;
-  align-items:center;gap:25px;border-top:1px solid #33251d;
-}
-footer .logo{font-size:26px}
-footer p{color:var(--muted);font-size:10px;letter-spacing:1px}
-.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s,transform .9s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:700px){
-  header{padding:22px 6%}
-  .logo{font-size:26px;letter-spacing:5px}
-  nav{gap:13px;font-size:9px}
-  .hero{padding:130px 7% 100px;min-height:90svh}
-  .hero-bg{
-    background:
-    linear-gradient(90deg,rgba(16,11,9,.87),rgba(16,11,9,.35)),
-    linear-gradient(0deg,var(--bg),transparent 40%),
-    url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1100&q=85') center/cover;
-  }
-  .hero h1{font-size:75px}
-  .hero-note{right:5%;bottom:30px}
-  .section{padding:85px 7%}
-  .intro{grid-template-columns:1fr;gap:30px}
-  .image-story{height:390px;margin-top:50px}
-  .flavour-grid{grid-template-columns:1fr;gap:18px}
-  .flavour-card{min-height:430px}
-  .story{min-height:550px;padding:85px 7%}
-  footer{padding:35px 7%;flex-direction:column;text-align:center}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
-}
+:root{--ink:#100805;--cream:#f7ecdc;--gold:#d5a65e;--muted:#b8a38e;--line:#ffffff25;--progress:0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--ink)}body{margin:0;background:var(--ink);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+#webgl{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:.92}
+header{position:fixed;z-index:10;top:0;left:0;width:100%;height:82px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff13;background:linear-gradient(#100805c9,transparent);backdrop-filter:blur(5px)}
+.logo{font:500 31px 'Cormorant Garamond',serif;letter-spacing:7px}.nav{display:flex;gap:35px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#e6d5c2}.nav a{transition:color .25s}.nav a:hover{color:var(--gold)}.nav-cta{border:1px solid var(--gold);padding:12px 18px;border-radius:30px;font-size:9px;letter-spacing:1.8px}
+.section{position:relative;z-index:1}.hero{min-height:100svh;display:flex;align-items:center;padding:150px 8vw 100px;overflow:hidden;background:#100805}
+.hero-photo{position:absolute;inset:0;background-image:linear-gradient(90deg,#100805 0%,#100805e8 24%,#1008055c 58%,#10080525 100%),linear-gradient(0deg,#100805 0%,transparent 26%),url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=2200&q=90');background-size:cover;background-position:center 53%;transform:scale(1.05);animation:heroIn 2s ease forwards;filter:saturate(.92)}
+@keyframes heroIn{to{transform:scale(1)}}.hero-copy{position:relative;z-index:3;max-width:590px}.eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:26px}.eyebrow:after{content:'';display:inline-block;width:55px;height:1px;background:var(--gold);vertical-align:middle;margin-left:17px}
+.hero h1{font:400 clamp(66px,9.4vw,135px)/.79 'Cormorant Garamond',serif;letter-spacing:-3px;margin:0}.hero h1 em{color:var(--gold);font-weight:400}.hero-copy p{font:400 14px/1.8 'Cormorant Garamond',serif;color:#e4d4c3;max-width:350px;margin:32px 0 26px}
+.button{display:inline-flex;align-items:center;gap:24px;padding:15px 22px;border:1px solid var(--gold);border-radius:30px;color:#f8d18c;text-transform:uppercase;font-size:9px;letter-spacing:1.6px;transition:.3s;background:#170c06a6}.button:hover{background:var(--gold);color:#170c06;transform:translateY(-2px)}
+.scroll-hint{position:absolute;left:8vw;bottom:38px;z-index:3;color:#d9b77e;font-size:9px;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:13px}.scroll-hint:before{content:'';width:1px;height:37px;background:var(--gold)}.hero-index{position:absolute;right:6vw;bottom:42px;color:#d9b77e;font-size:9px;letter-spacing:3px;writing-mode:vertical-rl}
+.collection{padding:105px 6vw 120px;background:radial-gradient(ellipse at 50% 0%,#48200e 0%,#1c0e08 45%,#100805 78%);overflow:hidden}.section-heading{text-align:center;position:relative;z-index:3;margin-bottom:55px}.section-heading .eyebrow{margin-bottom:14px}.section-heading h2{font:400 clamp(48px,6vw,82px)/.95 'Cormorant Garamond',serif;margin:0}.section-heading h2 em{color:var(--gold)}.section-heading p{font-size:12px;color:var(--muted);margin-top:17px}
+.flavours{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1320px;margin:auto;position:relative;z-index:3}.flavour{position:relative;min-height:390px;border:1px solid #d5a65e44;border-radius:16px;overflow:hidden;background:#1b0c06;cursor:pointer;isolation:isolate;transition:transform .4s,border-color .4s,box-shadow .4s}.flavour:hover,.flavour.active{transform:translateY(-9px);border-color:var(--gold);box-shadow:0 20px 70px #0008}.flavour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}.flavour:hover img{transform:scale(1.08)}.flavour:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#100805f5 0%,#10080525 65%,#10080510 100%)}
+.flavour-copy{position:absolute;left:25px;right:20px;bottom:25px}.flavour-copy small{color:#e7b96e;font-size:9px;letter-spacing:2px}.flavour-copy h3{font:500 35px 'Cormorant Garamond',serif;margin:8px 0 5px}.flavour-copy p{font:12px/1.6 'DM Sans',sans-serif;color:#e2d1bf;max-width:240px;margin:0}.flavour-toggle{position:absolute;right:22px;bottom:31px;width:31px;height:31px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:18px}
+.feature{min-height:90svh;display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;padding:100px 8vw;background:radial-gradient(ellipse at 70% 50%,#55240e 0%,#1a0d07 48%,#100805 80%);overflow:hidden}.feature-copy{position:relative;z-index:4}.feature-copy h2{font:400 clamp(52px,7vw,96px)/.87 'Cormorant Garamond',serif;margin:0}.feature-copy h2 em{color:var(--gold)}.feature-copy p{font:13px/1.9 'DM Sans',sans-serif;color:var(--muted);max-width:330px;margin:25px 0}
+.product-stage{height:570px;position:relative;display:grid;place-items:center;perspective:1000px;z-index:3}.product-glow{position:absolute;width:min(70vw,560px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#d36b252c 0%,#b75c1410 45%,transparent 70%);filter:blur(15px)}
+.product-photo{width:min(76%,520px);height:450px;object-fit:contain;filter:drop-shadow(0 35px 38px #000b);transform:rotate(-7deg);transition:transform .15s ease-out;will-change:transform;user-select:none;touch-action:pan-y}.drag-label{position:absolute;right:3%;top:52%;font-size:10px;color:#f0d3a7;letter-spacing:1px}.drag-label:before{content:'↔';font-size:20px;margin-right:9px}.product-dots{position:absolute;right:0;top:44%;display:flex;flex-direction:column;gap:12px}.product-dots button{width:7px;height:7px;border-radius:50%;border:0;background:#9e7550;padding:0;cursor:pointer}.product-dots button.active{background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.last-call{padding:100px 8vw;text-align:center;background:linear-gradient(0deg,#1a0b05,#100805)}.last-call h2{font:400 clamp(48px,7vw,90px)/.95 'Cormorant Garamond',serif;margin:0}.last-call h2 em{color:var(--gold)}.last-call p{color:var(--muted);font-size:13px;margin:20px 0 30px}
+footer{position:relative;z-index:3;border-top:1px solid #ffffff20;padding:28px 6vw;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#100805}footer .logo{font-size:25px}footer p{font-size:9px;letter-spacing:1.4px;color:var(--muted)}.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:translateY(0)}.progress{position:fixed;z-index:20;top:0;left:0;height:2px;width:calc(var(--progress)*100%);background:var(--gold);box-shadow:0 0 10px var(--gold)}
+@media(max-width:760px){header{height:68px;padding:0 6vw}.logo{font-size:25px;letter-spacing:5px}.nav{gap:15px;font-size:8px}.nav a:nth-child(1){display:none}.nav-cta{padding:10px 12px;font-size:8px}.hero{min-height:92svh;padding:130px 7vw 100px}.hero-photo{background-position:59% center;background-image:linear-gradient(90deg,#100805e8 0%,#100805a6 42%,#10080535 100%),linear-gradient(0deg,#100805 0%,transparent 35%),url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1200&q=85')}.hero h1{font-size:clamp(65px,14vw,94px)}.hero-copy p{font-size:13px;max-width:285px}.scroll-hint{left:7vw;bottom:25px}.hero-index{right:5vw;bottom:27px}.collection{padding:80px 6vw}.section-heading{margin-bottom:35px}.flavours{grid-template-columns:1fr;gap:15px}.flavour{min-height:350px}.feature{grid-template-columns:1fr;padding:85px 7vw 45px;min-height:auto}.feature-copy h2{font-size:68px}.product-stage{height:410px;margin-top:10px}.product-photo{height:350px;width:88%}.drag-label{right:0;top:48%;font-size:9px}.product-dots{right:0}.last-call{padding:85px 7vw}footer{flex-direction:column;text-align:center;padding:28px 6vw;gap:10px}#webgl{opacity:.65}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<header>
-  <a class="logo" href="#">CRÈMA</a>
-  <nav>
-    <a href="#story">Our story</a>
-    <a href="#flavours">Flavours</a>
-    <a href="#experience">Experience</a>
-  </nav>
-</header>
-
-<main>
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="eyebrow">The art of indulgence</div>
-    <h1>A taste<br>of <span>happiness.</span></h1>
-    <p>Some moments deserve to last forever. Discover a world of rich flavours, delicate textures and little moments of pure joy.</p>
-    <a class="cta" href="#flavours">Discover the flavours <span>↗</span></a>
-  </div>
-  <div class="hero-note">Crafted for the senses · Est. 2026</div>
-</section>
-
-<section class="section" id="story">
-  <div class="intro reveal">
-    <div>
-      <div class="section-label">01 — Beyond ordinary</div>
-      <h2>Not just ice cream.<br><em>A feeling.</em></h2>
-    </div>
-    <div class="intro-copy">
-      <p>We believe the smallest moments can become the most unforgettable. A spoonful of something beautiful. A pause in a busy day. A taste that takes you somewhere else.</p>
-      <p>CRÈMA is an invitation to slow down, savour the moment and experience the extraordinary in the everyday.</p>
-    </div>
-  </div>
-  <div class="image-story reveal">
-    <img src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&w=1800&q=90" alt="Rich and creamy ice cream">
-    <div class="image-caption">Every scoop tells a story.</div>
-  </div>
-</section>
-
-<section class="section flavours" id="flavours">
-  <div class="flavour-head reveal">
-    <div class="section-label">02 — The collection</div>
-    <h2>Choose your moment.</h2>
-    <p>Three little worlds. One unforgettable experience.</p>
-  </div>
-  <div class="flavour-grid">
-    <article class="flavour-card reveal" tabindex="0">
-      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=85" alt="Chocolate ice cream">
-      <div class="flavour-info">
-        <small>01 / DEEP & INTENSE</small>
-        <h3>Midnight Cacao</h3>
-        <p>Deep chocolate richness with a smooth, lingering finish.</p>
-      </div>
-    </article>
-    <article class="flavour-card reveal" tabindex="0">
-      <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=900&q=85" alt="Vanilla ice cream">
-      <div class="flavour-info">
-        <small>02 / SOFT & TIMELESS</small>
-        <h3>Golden Vanilla</h3>
-        <p>Silky sweetness inspired by a timeless classic.</p>
-      </div>
-    </article>
-    <article class="flavour-card reveal" tabindex="0">
-      <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=900&q=85" alt="Berry ice cream">
-      <div class="flavour-info">
-        <small>03 / BRIGHT & PLAYFUL</small>
-        <h3>Wild Berry</h3>
-        <p>A vibrant blend of fruit, freshness and creamy delight.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="section story" id="experience">
-  <div class="story-content reveal">
-    <div class="section-label">03 — Make it memorable</div>
-    <h2>Life is better<br>with a little <em>more.</em></h2>
-    <p>Take a moment. Find your flavour. Let the world wait just a little longer.</p>
-    <a class="cta" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to the beginning <span>↑</span></a>
-  </div>
-</section>
-</main>
-
-<footer>
-  <a class="logo" href="#">CRÈMA</a>
-  <p>A TASTE OF HAPPINESS — 2026</p>
-  <p>MADE FOR THE MOMENTS THAT MATTER.</p>
-</footer>
-
-<script>
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:0.12});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-document.querySelectorAll('.flavour-card').forEach(card=>{
-  function selectCard(){
-    document.querySelectorAll('.flavour-card').forEach(item=>item.classList.remove('active'));
-    card.classList.add('active');
-  }
-  card.addEventListener('click',selectCard);
-  card.addEventListener('keydown',event=>{
-    if(event.key==='Enter'||event.key===' '){
-      event.preventDefault();
-      selectCard();
-    }
-  });
-});
-
-window.addEventListener('scroll',()=>{
-  const bg=document.querySelector('.hero-bg');
-  if(bg && window.scrollY<window.innerHeight){
-    bg.style.backgroundPosition=`center ${window.scrollY*0.22}px`;
-  }
-},{passive:true});
+<div class="progress" aria-hidden="true"></div>
+<canvas id="webgl" aria-hidden="true"></canvas>
+<header><a class="logo" href="#top">CRÈMA</a><nav class="nav"><a href="#story">Our story</a><a href="#flavours">Flavours</a><a href="#experience">Experience</a></nav><a class="nav-cta" href="#flavours">Explore ↗</a></header>
+<main id="top">
+<section class="hero section" id="story"><div class="hero-photo" aria-hidden="true"></div><div class="hero-copy"><div class="eyebrow">The art of indulgence</div><h1>A taste<br>of <em>happiness.</em></h1><p>Some moments deserve to last forever. Discover a world of rich flavours, delicate textures and little moments of pure joy.</p><a class="button" href="#flavours">Explore flavours <span>↗</span></a></div><div class="scroll-hint">Scroll to explore</div><div class="hero-index">CRAFTED FOR THE SENSES · EST. 2026</div></section>
+<section class="collection section" id="flavours"><div class="section-heading reveal"><div class="eyebrow">Our collection</div><h2>Choose your <em>moment.</em></h2><p>Three little worlds. One unforgettable experience.</p></div><div class="flavours">
+<article class="flavour active reveal" tabindex="0" role="button" data-flavour="cacao"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1000&q=88" alt="Rich chocolate ice cream"><div class="flavour-copy"><small>01 / DEEP & INTENSE</small><h3>Midnight Cacao</h3><p>Deep chocolate richness with a smooth, lingering finish.</p></div><span class="flavour-toggle">+</span></article>
+<article class="flavour reveal" tabindex="0" role="button" data-flavour="vanilla"><img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=1000&q=88" alt="Golden vanilla ice cream"><div class="flavour-copy"><small>02 / SOFT & TIMELESS</small><h3>Golden Vanilla</h3><p>Silky sweetness inspired by a timeless classic.</p></div><span class="flavour-toggle">+</span></article>
+<article class="flavour reveal" tabindex="0" role="button" data-flavour="berry"><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=88" alt="Berry ice cream"><div class="flavour-copy"><small>03 / BRIGHT & PLAYFUL</small><h3>Wild Berry</h3><p>A vibrant blend of fruit, freshness and creamy delight.</p></div><span class="flavour-toggle">+</span></article>
+</div></section>
+<section class="feature section" id="experience"><div class="feature-copy reveal"><div class="eyebrow">Our experience</div><h2>Life is better<br>with a little <em>more.</em></h2><p>Take a moment. Find your flavour. Let the world wait just a little longer. Move your finger across the product to explore its angles.</p><a class="button" href="#top">Discover CRÈMA <span>↗</span></a></div><div class="product-stage"><div class="product-glow"></div><img class="product-photo" id="product" src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1000&q=90" alt="CRÈMA chocolate ice cream visual"><div class="drag-label">Drag to explore</div><div class="product-dots"><button class="active" aria-label="Midnight Cacao"></button><button aria-label="Golden Vanilla"></button><button aria-label="Wild Berry"></button></div></div></section>
+<section class="last-call section"><div class="eyebrow">Make it memorable</div><h2>A little more <em>wonder.</em></h2><p>Find your flavour. Make the moment yours.</p><a class="button" href="#flavours">Explore the collection <span>↗</span></a></section>
+</main><footer><a class="logo" href="#top">CRÈMA</a><p>A TASTE OF HAPPINESS — 2026</p><p>MADE FOR THE MOMENTS THAT MATTER.</p></footer>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+const canvas=document.querySelector('#webgl');
+let renderer,scene,camera,particles=[],shards=[];
+try{
+ renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:window.devicePixelRatio<2});
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;
+ scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,100);camera.position.z=12;
+ scene.add(new THREE.AmbientLight(0xffc99a,1.35));
+ const key=new THREE.PointLight(0xffa34c,32,30);key.position.set(3,4,7);scene.add(key);
+ const fill=new THREE.PointLight(0x7a2d13,22,25);fill.position.set(-5,-2,4);scene.add(fill);
+ const gold=new THREE.MeshStandardMaterial({color:0x8a431d,roughness:.34,metalness:.18});
+ const cocoa=new THREE.MeshStandardMaterial({color:0x32140c,roughness:.58,metalness:.06});
+ const glint=new THREE.MeshStandardMaterial({color:0xc27a37,roughness:.25,metalness:.55});
+ const count=240,positions=new Float32Array(count*3);
+ for(let i=0;i<count;i++){positions[i*3]=(Math.random()-.5)*17;positions[i*3+1]=(Math.random()-.5)*11;positions[i*3+2]=(Math.random()-.5)*9;}
+ const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+ const mat=new THREE.PointsMaterial({color:0xe7a75c,size:.035,transparent:true,opacity:.8,depthWrite:false});const dust=new THREE.Points(geo,mat);scene.add(dust);
+ for(let i=0;i<23;i++){const g=new THREE.IcosahedronGeometry(.12+Math.random()*.18,0);const m=new THREE.Mesh(g,i%4===0?glint:cocoa);m.scale.set(.65+Math.random()*.8,.45+Math.random()*.8,.18+Math.random()*.3);m.position.set((Math.random()-.5)*13,(Math.random()-.5)*8,-1-Math.random()*5);m.rotation.set(Math.random()*6,Math.random()*6,Math.random()*6);m.userData={speed:.15+Math.random()*.35,phase:Math.random()*6.28,baseY:m.position.y};scene.add(m);shards.push(m);}
+ const dropGeo=new THREE.SphereGeometry(.045,10,8);
+ for(let i=0;i<26;i++){const d=new THREE.Mesh(dropGeo,i%3===0?glint:gold);d.position.set((Math.random()-.5)*12,(Math.random()-.5)*7,-Math.random()*6);d.scale.set(.7,1.35,.7);d.userData={phase:Math.random()*6.28,speed:.25+Math.random()*.4};scene.add(d);particles.push(d);}
+ const pointer=new THREE.Vector2(0,0);let scroll=0;
+ addEventListener('pointermove',e=>{pointer.x=(e.clientX/innerWidth-.5)*2;pointer.y=(e.clientY/innerHeight-.5)*2;},{passive:true});
+ addEventListener('scroll',()=>{scroll=scrollY/Math.max(1,document.body.scrollHeight-innerHeight);document.documentElement.style.setProperty('--progress',scroll);},{passive:true});
+ const clock=new THREE.Clock();
+ function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();dust.rotation.y=t*.018;dust.rotation.x=Math.sin(t*.08)*.035;camera.position.x+=(pointer.x*.5-camera.position.x)*.025;camera.position.y+=(-pointer.y*.3+scroll*.6-camera.position.y)*.025;camera.position.z=12-scroll*1.2;shards.forEach(o=>{o.rotation.x+=o.userData.speed*.006;o.rotation.y+=o.userData.speed*.009;o.position.y=o.userData.baseY+Math.sin(t*o.userData.speed+o.userData.phase)*.18;});particles.forEach(o=>{o.position.y+=Math.sin(t*o.userData.speed+o.userData.phase)*.0018;o.rotation.y+=.004;});renderer.render(scene,camera);}
+ animate();addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);},{passive:true});
+}catch(err){console.warn('3D effects unavailable on this device/browser',err);}
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const product=document.querySelector('#product');const productImages={cacao:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1000&q=90',vanilla:'https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=1000&q=90',berry:'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=90'};
+document.querySelectorAll('.flavour').forEach(card=>{const choose=()=>{document.querySelectorAll('.flavour').forEach(x=>x.classList.remove('active'));card.classList.add('active');const key=card.dataset.flavour;product.src=productImages[key];document.querySelectorAll('.product-dots button').forEach((b,i)=>b.classList.toggle('active',i===['cacao','vanilla','berry'].indexOf(key)));};card.addEventListener('click',choose);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});
+const stage=document.querySelector('.product-stage');let dragging=false,startX=0,rotation=-7;stage.addEventListener('pointerdown',e=>{dragging=true;startX=e.clientX;stage.setPointerCapture?.(e.pointerId);});stage.addEventListener('pointermove',e=>{if(!dragging)return;rotation+=(e.clientX-startX)*.35;startX=e.clientX;product.style.transform=`rotate(${rotation}deg) rotateY(${Math.max(-18,Math.min(18,(rotation+7)*.7))}deg)`;});stage.addEventListener('pointerup',()=>dragging=false);stage.addEventListener('pointercancel',()=>dragging=false);
 </script>
 </body>
 </html>
