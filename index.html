@@ -4,290 +4,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRÈMA — Made of Little Joys</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<title>CRÈMA — A Taste of Happiness</title>
+<meta name="theme-color" content="#100b09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
+:root {
+  --bg:#100b09;
+  --cream:#f4ead9;
+  --gold:#c8a56b;
+  --muted:#a99a88;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;background:#eee8dc;color:#29251f;font-family:'DM Sans',sans-serif}
-nav{position:fixed;z-index:5;top:0;width:100%;display:flex;justify-content:space-between;padding:25px 6%;font-size:11px;letter-spacing:2px;text-transform:uppercase}
-nav b{font-size:19px;letter-spacing:5px}
-section{min-height:100vh;position:relative;overflow:hidden;padding:100px 7vw}
-.hero{background:radial-gradient(ellipse at 55% 60%,#f8d9ad,#e9c9a5 35%,#eee8dc 75%)}
-#scene{position:absolute;inset:0;width:100%;height:100%}
-.copy{position:absolute;z-index:2;left:9%;top:23%;max-width:340px}
-.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase}
-h1,h2{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-3px}
-h1{font-size:clamp(60px,9vw,110px);line-height:.92;margin:25px 0}
-p{font-size:14px;line-height:1.8;color:#655b4e;max-width:300px}
-.pill{display:inline-block;margin-top:18px;border:1px solid #514536;border-radius:30px;padding:14px 23px;text-decoration:none;color:inherit;font-size:10px;letter-spacing:2px;text-transform:uppercase}
-.scroll{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px}
-.story{background:#d7bda0;display:flex;align-items:center}
-.story:nth-of-type(3){background:#e8dfd0}
-.story .copy{position:relative;left:auto;top:auto;margin-left:48%}
-.story h2{font-size:clamp(50px,8vw,95px);line-height:.95;margin:20px 0}
-.number{font:italic 18px 'Playfair Display';color:#927b60}
-.footer{min-height:70vh;background:#29251f;color:#eee8dc;display:grid;place-items:center;text-align:center}
-.footer h2{font-size:clamp(55px,9vw,100px);line-height:.95}
-.footer p{color:#c4b9a8}
-@media(max-width:650px){
-.copy{top:15%;left:8%;max-width:260px}
-h1{font-size:65px}
-.story{align-items:end;padding-bottom:15vh}
-.story .copy{margin:0}
-.story:after{content:'✳';position:absolute;top:15%;right:12%;font-size:110px;color:#a47d56;opacity:.3}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+header{
+  position:absolute;top:0;left:0;width:100%;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px 7%;
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;letter-spacing:7px;color:var(--cream);
+}
+nav{display:flex;gap:32px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+nav a{color:#d5c9b9;transition:.3s}
+nav a:hover{color:var(--gold)}
+.menu{display:none}
+.hero{
+  min-height:100svh;position:relative;display:flex;align-items:center;
+  padding:140px 9% 90px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+  linear-gradient(90deg,rgba(16,11,9,.96) 0%,rgba(16,11,9,.65) 43%,rgba(16,11,9,.12) 100%),
+  linear-gradient(0deg,var(--bg),transparent 30%),
+  url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=2000&q=90') center/cover;
+  transform:scale(1.06);
+  animation:heroZoom 12s ease-out forwards;
+}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-content{position:relative;z-index:1;max-width:650px}
+.eyebrow{
+  color:var(--gold);font-size:10px;letter-spacing:5px;
+  text-transform:uppercase;margin-bottom:25px;
+}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
+.hero h1{font-size:clamp(64px,10vw,132px);line-height:.82;letter-spacing:-3px}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero p{
+  color:#d0c2b1;font-size:14px;line-height:1.9;
+  max-width:390px;margin:35px 0;
+}
+.cta{
+  display:inline-flex;align-items:center;gap:25px;
+  padding:16px 24px;border:1px solid var(--gold);
+  color:var(--cream);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;transition:.35s;
+}
+.cta:hover{background:var(--gold);color:#170f0a}
+.cta span{font-size:18px}
+.hero-note{
+  position:absolute;right:7%;bottom:55px;
+  writing-mode:vertical-rl;color:#d6c4a9;
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+}
+.section{padding:130px 9%;position:relative}
+.section-label{
+  color:var(--gold);font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;margin-bottom:25px;
+}
+.intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:9%;align-items:center;
+}
+.intro h2{font-size:clamp(45px,6vw,78px);line-height:.98}
+.intro h2 em{color:var(--gold)}
+.intro-copy{color:var(--muted);font-size:14px;line-height:2}
+.intro-copy p+p{margin-top:20px}
+.image-story{
+  height:580px;position:relative;margin-top:90px;overflow:hidden;
+}
+.image-story img{transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
+.image-story:hover img{transform:scale(1.045)}
+.image-caption{
+  position:absolute;left:35px;bottom:35px;
+  font-family:'Cormorant Garamond',serif;font-size:32px;
+  text-shadow:0 2px 20px #000;
+}
+.flavours{background:#17100d}
+.flavour-head{text-align:center;margin-bottom:65px}
+.flavour-head h2{font-size:clamp(48px,7vw,86px)}
+.flavour-head p{color:var(--muted);font-size:13px;margin-top:15px}
+.flavour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.flavour-card{
+  position:relative;min-height:440px;overflow:hidden;
+  background:#241913;cursor:pointer;border:1px solid #38271e;
+  transition:transform .4s,border-color .4s;
+}
+.flavour-card:hover,.flavour-card.active{
+  transform:translateY(-9px);border-color:var(--gold);
+}
+.flavour-card img{position:absolute;inset:0;transition:transform .8s}
+.flavour-card:hover img{transform:scale(1.07)}
+.flavour-card:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(12,8,6,.96),transparent 75%);
+}
+.flavour-info{position:absolute;z-index:1;bottom:28px;left:25px;right:25px}
+.flavour-info small{color:var(--gold);letter-spacing:3px;font-size:9px}
+.flavour-info h3{font-size:38px;margin:8px 0}
+.flavour-info p{font-size:11px;color:#c5b6a5;line-height:1.7}
+.story{
+  min-height:620px;display:flex;align-items:center;
+  background:
+  linear-gradient(90deg,rgba(13,8,6,.92),rgba(13,8,6,.25)),
+  url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+.story-content{max-width:570px}
+.story h2{font-size:clamp(55px,8vw,100px);line-height:.9}
+.story h2 em{color:var(--gold)}
+.story p{max-width:390px;color:#d1c2b0;line-height:1.9;font-size:13px;margin:28px 0}
+footer{
+  padding:55px 9%;display:flex;justify-content:space-between;
+  align-items:center;gap:25px;border-top:1px solid #33251d;
+}
+footer .logo{font-size:26px}
+footer p{color:var(--muted);font-size:10px;letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s,transform .9s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:700px){
+  header{padding:22px 6%}
+  .logo{font-size:26px;letter-spacing:5px}
+  nav{gap:13px;font-size:9px}
+  .hero{padding:130px 7% 100px;min-height:90svh}
+  .hero-bg{
+    background:
+    linear-gradient(90deg,rgba(16,11,9,.87),rgba(16,11,9,.35)),
+    linear-gradient(0deg,var(--bg),transparent 40%),
+    url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1100&q=85') center/cover;
+  }
+  .hero h1{font-size:75px}
+  .hero-note{right:5%;bottom:30px}
+  .section{padding:85px 7%}
+  .intro{grid-template-columns:1fr;gap:30px}
+  .image-story{height:390px;margin-top:50px}
+  .flavour-grid{grid-template-columns:1fr;gap:18px}
+  .flavour-card{min-height:430px}
+  .story{min-height:550px;padding:85px 7%}
+  footer{padding:35px 7%;flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
 </style>
 </head>
 <body>
+<header>
+  <a class="logo" href="#">CRÈMA</a>
+  <nav>
+    <a href="#story">Our story</a>
+    <a href="#flavours">Flavours</a>
+    <a href="#experience">Experience</a>
+  </nav>
+</header>
 
-<nav>
-<b>CRÈMA</b>
-<span>SMALL BATCH · SINCE 1988</span>
-<span>MENU ↗</span>
-</nav>
-
+<main>
 <section class="hero">
-<canvas id="scene"></canvas>
-<div class="copy">
-<div class="eyebrow">A sweeter kind of moment</div>
-<h1>Made of<br>little joys.</h1>
-<p>Slow-crafted scoops, warm memories, and a little world worth getting lost in.</p>
-<a class="pill" href="#story">Discover our world ↘</a>
-</div>
-<div class="scroll">SCROLL TO EXPLORE ↓</div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow">The art of indulgence</div>
+    <h1>A taste<br>of <span>happiness.</span></h1>
+    <p>Some moments deserve to last forever. Discover a world of rich flavours, delicate textures and little moments of pure joy.</p>
+    <a class="cta" href="#flavours">Discover the flavours <span>↗</span></a>
+  </div>
+  <div class="hero-note">Crafted for the senses · Est. 2026</div>
 </section>
 
-<section class="story" id="story">
-<div class="copy">
-<div class="number">01 / THE CRAFT</div>
-<h2>Good things<br>take time.</h2>
-<p>Every scoop begins with honest ingredients, a patient hand, and the belief that the details make the difference.</p>
-</div>
+<section class="section" id="story">
+  <div class="intro reveal">
+    <div>
+      <div class="section-label">01 — Beyond ordinary</div>
+      <h2>Not just ice cream.<br><em>A feeling.</em></h2>
+    </div>
+    <div class="intro-copy">
+      <p>We believe the smallest moments can become the most unforgettable. A spoonful of something beautiful. A pause in a busy day. A taste that takes you somewhere else.</p>
+      <p>CRÈMA is an invitation to slow down, savour the moment and experience the extraordinary in the everyday.</p>
+    </div>
+  </div>
+  <div class="image-story reveal">
+    <img src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&w=1800&q=90" alt="Rich and creamy ice cream">
+    <div class="image-caption">Every scoop tells a story.</div>
+  </div>
 </section>
 
-<section class="story">
-<div class="copy">
-<div class="number">02 / THE FEELING</div>
-<h2>A little<br>happiness.</h2>
-<p>From the first swirl to the last spoonful, make room for the moments that feel like summer.</p>
-</div>
+<section class="section flavours" id="flavours">
+  <div class="flavour-head reveal">
+    <div class="section-label">02 — The collection</div>
+    <h2>Choose your moment.</h2>
+    <p>Three little worlds. One unforgettable experience.</p>
+  </div>
+  <div class="flavour-grid">
+    <article class="flavour-card reveal" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=85" alt="Chocolate ice cream">
+      <div class="flavour-info">
+        <small>01 / DEEP & INTENSE</small>
+        <h3>Midnight Cacao</h3>
+        <p>Deep chocolate richness with a smooth, lingering finish.</p>
+      </div>
+    </article>
+    <article class="flavour-card reveal" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=900&q=85" alt="Vanilla ice cream">
+      <div class="flavour-info">
+        <small>02 / SOFT & TIMELESS</small>
+        <h3>Golden Vanilla</h3>
+        <p>Silky sweetness inspired by a timeless classic.</p>
+      </div>
+    </article>
+    <article class="flavour-card reveal" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=900&q=85" alt="Berry ice cream">
+      <div class="flavour-info">
+        <small>03 / BRIGHT & PLAYFUL</small>
+        <h3>Wild Berry</h3>
+        <p>A vibrant blend of fruit, freshness and creamy delight.</p>
+      </div>
+    </article>
+  </div>
 </section>
 
-<section class="footer">
-<div>
-<div class="eyebrow">COME BY FOR A SCOOP</div>
-<h2>Stay a little<br>longer.</h2>
-<p>Freshly made. Always worth the visit.</p>
-<a class="pill" style="border-color:#eee8dc;color:#eee8dc" href="#">BACK TO TOP ↑</a>
-</div>
+<section class="section story" id="experience">
+  <div class="story-content reveal">
+    <div class="section-label">03 — Make it memorable</div>
+    <h2>Life is better<br>with a little <em>more.</em></h2>
+    <p>Take a moment. Find your flavour. Let the world wait just a little longer.</p>
+    <a class="cta" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to the beginning <span>↑</span></a>
+  </div>
 </section>
+</main>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<footer>
+  <a class="logo" href="#">CRÈMA</a>
+  <p>A TASTE OF HAPPINESS — 2026</p>
+  <p>MADE FOR THE MOMENTS THAT MATTER.</p>
+</footer>
 
 <script>
-(()=>{
-const canvas=document.querySelector('#scene');
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);
-camera.position.set(0,1.4,9);
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
 
-const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(innerWidth,innerHeight);
-renderer.shadowMap.enabled=true;
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-scene.add(new THREE.HemisphereLight(0xfff1d9,0x80644b,2));
-const light=new THREE.DirectionalLight(0xffffff,3);
-light.position.set(-3,7,6);
-light.castShadow=true;
-scene.add(light);
-
-const world=new THREE.Group();
-scene.add(world);
-
-const material=(color)=>new THREE.MeshStandardMaterial({color,roughness:.55});
-const cream=material('#f4d6aa');
-const pink=material('#d78b78');
-const coneMaterial=material('#bd8751');
-const dark=material('#48362a');
-const gold=material('#d4a96d');
-
-const floor=new THREE.Mesh(
-new THREE.CircleGeometry(3.2,64),
-material('#d9b68e')
-);
-floor.rotation.x=-Math.PI/2;
-floor.position.y=-1.35;
-floor.receiveShadow=true;
-world.add(floor);
-
-const cone=new THREE.Mesh(
-new THREE.ConeGeometry(.72,2.1,48),
-coneMaterial
-);
-cone.position.set(.4,-.1,0);
-cone.rotation.z=-.13;
-cone.castShadow=true;
-world.add(cone);
-
-for(let i=0;i<7;i++){
-const ring=new THREE.Mesh(
-new THREE.TorusGeometry(.5-i*.045,.018,6,48),
-gold
-);
-ring.position.set(.4,-.65+i*.18,0);
-ring.rotation.x=Math.PI/2;
-ring.scale.set(1,.82,1);
-world.add(ring);
-}
-
-const scoop=new THREE.Mesh(
-new THREE.SphereGeometry(.72,48,32),
-cream
-);
-scoop.position.set(.1,1.18,0);
-scoop.scale.set(1,.82,1);
-scoop.castShadow=true;
-world.add(scoop);
-
-const scoop2=new THREE.Mesh(
-new THREE.SphereGeometry(.55,40,28),
-pink
-);
-scoop2.position.set(.72,1.48,.12);
-scoop2.scale.set(1,.82,1);
-world.add(scoop2);
-
-const cherry=new THREE.Mesh(
-new THREE.SphereGeometry(.13,24,16),
-material('#9c3f36')
-);
-cherry.position.set(.5,2.08,.18);
-world.add(cherry);
-
-const person=new THREE.Group();
-world.add(person);
-person.position.set(-1.45,-1.22,.2);
-
-const body=new THREE.Mesh(
-new THREE.CapsuleGeometry(.13,.48,5,12),
-material('#f5eee2')
-);
-body.position.y=.55;
-body.rotation.z=-.12;
-person.add(body);
-
-const head=new THREE.Mesh(
-new THREE.SphereGeometry(.16,24,18),
-material('#c88961')
-);
-head.position.set(.02,.98,0);
-person.add(head);
-
-const hair=new THREE.Mesh(
-new THREE.SphereGeometry(.17,20,12),
-dark
-);
-hair.scale.set(1,.55,1);
-hair.position.set(.02,1.08,-.015);
-person.add(hair);
-
-for(let side of [-1,1]){
-const leg=new THREE.Mesh(
-new THREE.CylinderGeometry(.055,.045,.42,10),
-dark
-);
-leg.position.set(side*.09,.17,0);
-person.add(leg);
-}
-
-const arm=new THREE.Mesh(
-new THREE.CylinderGeometry(.045,.035,.43,10),
-material('#c88961')
-);
-arm.position.set(.25,.63,0);
-arm.rotation.z=-1.05;
-person.add(arm);
-
-const spoon=new THREE.Mesh(
-new THREE.CylinderGeometry(.018,.018,.48,8),
-gold
-);
-spoon.position.set(.48,.78,.03);
-spoon.rotation.z=-.65;
-person.add(spoon);
-
-for(let i=0;i<22;i++){
-const dot=new THREE.Mesh(
-new THREE.SphereGeometry(.035+Math.random()*.04,10,8),
-material(i%2?'#e5bd8e':'#b77c57')
-);
-const angle=Math.random()*Math.PI*2;
-const radius=1.8+Math.random()*.8;
-dot.position.set(
-Math.cos(angle)*radius,
--1.18+Math.random()*.4,
-Math.sin(angle)*radius
-);
-world.add(dot);
-}
-
-world.position.x=innerWidth<650?.75:1.35;
-world.scale.setScalar(innerWidth<650?.78:1);
-
-if(window.gsap&&window.ScrollTrigger){
-gsap.registerPlugin(ScrollTrigger);
-gsap.to(world.rotation,{
-y:Math.PI*1.4,
-ease:'none',
-scrollTrigger:{
-trigger:document.body,
-start:'top top',
-end:'bottom bottom',
-scrub:1
-}
+document.querySelectorAll('.flavour-card').forEach(card=>{
+  function selectCard(){
+    document.querySelectorAll('.flavour-card').forEach(item=>item.classList.remove('active'));
+    card.classList.add('active');
+  }
+  card.addEventListener('click',selectCard);
+  card.addEventListener('keydown',event=>{
+    if(event.key==='Enter'||event.key===' '){
+      event.preventDefault();
+      selectCard();
+    }
+  });
 });
-gsap.to(world.position,{
-y:-1.1,
-ease:'none',
-scrollTrigger:{
-trigger:document.body,
-start:'top top',
-end:'bottom bottom',
-scrub:1
-}
-});
-gsap.to(camera.position,{
-z:7,
-ease:'none',
-scrollTrigger:{
-trigger:document.body,
-start:'top top',
-end:'bottom bottom',
-scrub:1
-}
-});
-}
 
-function animate(){
-requestAnimationFrame(animate);
-scoop2.position.y=1.48+Math.sin(Date.now()*.001)*.035;
-renderer.render(scene,camera);
-}
-animate();
-
-addEventListener('resize',()=>{
-camera.aspect=innerWidth/innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(innerWidth,innerHeight);
-world.position.x=innerWidth<650?.75:1.35;
-world.scale.setScalar(innerWidth<650?.78:1);
-});
-})();
+window.addEventListener('scroll',()=>{
+  const bg=document.querySelector('.hero-bg');
+  if(bg && window.scrollY<window.innerHeight){
+    bg.style.backgroundPosition=`center ${window.scrollY*0.22}px`;
+  }
+},{passive:true});
 </script>
 </body>
-  </html>
-  
+</html>
